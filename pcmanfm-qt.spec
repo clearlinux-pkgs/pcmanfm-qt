@@ -6,10 +6,10 @@
 #
 Name     : pcmanfm-qt
 Version  : 0.14.1
-Release  : 3
-URL      : https://downloads.lxqt.org/downloads/pcmanfm-qt/0.14.1/pcmanfm-qt-0.14.1.tar.xz
-Source0  : https://downloads.lxqt.org/downloads/pcmanfm-qt/0.14.1/pcmanfm-qt-0.14.1.tar.xz
-Source99 : https://downloads.lxqt.org/downloads/pcmanfm-qt/0.14.1/pcmanfm-qt-0.14.1.tar.xz.asc
+Release  : 4
+URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/0.14.1/pcmanfm-qt-0.14.1.tar.xz
+Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/0.14.1/pcmanfm-qt-0.14.1.tar.xz
+Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/0.14.1/pcmanfm-qt-0.14.1.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -22,9 +22,12 @@ BuildRequires : buildreq-kde
 BuildRequires : doxygen
 BuildRequires : libexif-dev
 BuildRequires : libfm-qt-dev
+BuildRequires : liblxqt-data
 BuildRequires : lxqt-build-tools
 BuildRequires : menu-cache-dev
+BuildRequires : qtbase-dev
 BuildRequires : qttools-dev
+BuildRequires : qtx11extras-dev
 
 %description
 # PCManFM-Qt
@@ -67,25 +70,30 @@ man components for the pcmanfm-qt package.
 
 %prep
 %setup -q -n pcmanfm-qt-0.14.1
+cd %{_builddir}/pcmanfm-qt-0.14.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552928556
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1598292251
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552928556
+export SOURCE_DATE_EPOCH=1598292251
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pcmanfm-qt
-cp LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/LICENSE
+cp %{_builddir}/pcmanfm-qt-0.14.1/LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa
 pushd clr-build
 %make_install
 popd
@@ -132,7 +140,7 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pcmanfm-qt/LICENSE
+/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa
 
 %files man
 %defattr(0644,root,root,0755)
