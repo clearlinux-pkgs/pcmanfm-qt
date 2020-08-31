@@ -3,3 +3,5 @@
 buildreq-kde
 menu-cache-dev
 libexif-dev
+libfm-qt-dev
+lxqt-build-tools
