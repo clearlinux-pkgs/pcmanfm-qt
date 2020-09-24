@@ -6,7 +6,7 @@
 #
 Name     : pcmanfm-qt
 Version  : 0.15.1
-Release  : 5
+Release  : 6
 URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/0.15.1/pcmanfm-qt-0.15.1.tar.xz
 Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/0.15.1/pcmanfm-qt-0.15.1.tar.xz
 Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/0.15.1/pcmanfm-qt-0.15.1.tar.xz.asc
