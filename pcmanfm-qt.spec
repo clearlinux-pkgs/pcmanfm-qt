@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : pcmanfm-qt
-Version  : 0.16.0
-Release  : 9
-URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/0.16.0/pcmanfm-qt-0.16.0.tar.xz
-Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/0.16.0/pcmanfm-qt-0.16.0.tar.xz
-Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/0.16.0/pcmanfm-qt-0.16.0.tar.xz.asc
+Version  : 1.0.0
+Release  : 10
+URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/1.0.0/pcmanfm-qt-1.0.0.tar.xz
+Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.0.0/pcmanfm-qt-1.0.0.tar.xz
+Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.0.0/pcmanfm-qt-1.0.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -69,15 +69,15 @@ man components for the pcmanfm-qt package.
 
 
 %prep
-%setup -q -n pcmanfm-qt-0.16.0
-cd %{_builddir}/pcmanfm-qt-0.16.0
+%setup -q -n pcmanfm-qt-1.0.0
+cd %{_builddir}/pcmanfm-qt-1.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1636133681
+export SOURCE_DATE_EPOCH=1636153056
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,10 +90,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1636133681
+export SOURCE_DATE_EPOCH=1636153056
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pcmanfm-qt
-cp %{_builddir}/pcmanfm-qt-0.16.0/LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa
+cp %{_builddir}/pcmanfm-qt-1.0.0/LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa
 pushd clr-build
 %make_install
 popd
@@ -113,6 +113,7 @@ popd
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ar.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_arn.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ast.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_bg.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ca.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_cs.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_cy.qm
@@ -132,19 +133,24 @@ popd
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_id.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_it.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ja.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_kk.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ko.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_lt.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_lv.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_nb_NO.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_nl.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_oc.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_pl.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_pt.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_pt_BR.qm
-/usr/share/pcmanfm-qt/translations/pcmanfm-qt_pt_PT.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_ro.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ru.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_si.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_sk_SK.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_sv.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_tr.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_uk.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_vi.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_zh_CN.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_zh_TW.qm
 
