@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : pcmanfm-qt
-Version  : 1.0.0
-Release  : 10
-URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/1.0.0/pcmanfm-qt-1.0.0.tar.xz
-Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.0.0/pcmanfm-qt-1.0.0.tar.xz
-Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.0.0/pcmanfm-qt-1.0.0.tar.xz.asc
+Version  : 1.1.0
+Release  : 11
+URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/1.1.0/pcmanfm-qt-1.1.0.tar.xz
+Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.1.0/pcmanfm-qt-1.1.0.tar.xz
+Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.1.0/pcmanfm-qt-1.1.0.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -69,15 +69,15 @@ man components for the pcmanfm-qt package.
 
 
 %prep
-%setup -q -n pcmanfm-qt-1.0.0
-cd %{_builddir}/pcmanfm-qt-1.0.0
+%setup -q -n pcmanfm-qt-1.1.0
+cd %{_builddir}/pcmanfm-qt-1.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1636153056
+export SOURCE_DATE_EPOCH=1650295048
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -90,10 +90,10 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1636153056
+export SOURCE_DATE_EPOCH=1650295048
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pcmanfm-qt
-cp %{_builddir}/pcmanfm-qt-1.0.0/LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa
+cp %{_builddir}/pcmanfm-qt-1.1.0/LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa
 pushd clr-build
 %make_install
 popd
@@ -147,6 +147,7 @@ popd
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_ru.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_si.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_sk_SK.qm
+/usr/share/pcmanfm-qt/translations/pcmanfm-qt_sl.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_sv.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_tr.qm
 /usr/share/pcmanfm-qt/translations/pcmanfm-qt_uk.qm
