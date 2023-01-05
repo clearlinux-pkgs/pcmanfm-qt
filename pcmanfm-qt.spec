@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBE793007AD22DF7E (tsujan2000@gmail.com)
 #
 Name     : pcmanfm-qt
-Version  : 1.2.0
-Release  : 12
-URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/1.2.0/pcmanfm-qt-1.2.0.tar.xz
-Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.2.0/pcmanfm-qt-1.2.0.tar.xz
-Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.2.0/pcmanfm-qt-1.2.0.tar.xz.asc
+Version  : 1.2.1
+Release  : 13
+URL      : https://github.com/lxqt/pcmanfm-qt/releases/download/1.2.1/pcmanfm-qt-1.2.1.tar.xz
+Source0  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.2.1/pcmanfm-qt-1.2.1.tar.xz
+Source1  : https://github.com/lxqt/pcmanfm-qt/releases/download/1.2.1/pcmanfm-qt-1.2.1.tar.xz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -28,11 +28,15 @@ BuildRequires : menu-cache-dev
 BuildRequires : qtbase-dev
 BuildRequires : qttools-dev
 BuildRequires : qtx11extras-dev
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 # PCManFM-Qt
 ## Overview
-PCManFM-Qt is the Qt port of PCManFM, the file manager of [LXDE](https://lxde.org).
+PCManFM-Qt is a Qt-based file manager which uses `GLib` for file management.
+It was started as the Qt port of PCManFM, the file manager of [LXDE](https://lxde.org).
 
 %package bin
 Summary: bin components for the pcmanfm-qt package.
@@ -69,28 +73,28 @@ man components for the pcmanfm-qt package.
 
 
 %prep
-%setup -q -n pcmanfm-qt-1.2.0
-cd %{_builddir}/pcmanfm-qt-1.2.0
+%setup -q -n pcmanfm-qt-1.2.1
+cd %{_builddir}/pcmanfm-qt-1.2.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667845369
+export SOURCE_DATE_EPOCH=1672934331
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$FFLAGS -fno-lto "
-export FFLAGS="$FFLAGS -fno-lto "
-export CXXFLAGS="$CXXFLAGS -fno-lto "
+export CFLAGS="$CFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FCFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export FFLAGS="$FFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CXXFLAGS="$CXXFLAGS -fdebug-types-section -femit-struct-debug-baseonly -fno-lto -g1 -gno-column-info -gno-variable-location-views -gz "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667845369
+export SOURCE_DATE_EPOCH=1672934331
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pcmanfm-qt
 cp %{_builddir}/pcmanfm-qt-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pcmanfm-qt/db95910cb27890d60e596e4c622fc3eeba6693fa || :
